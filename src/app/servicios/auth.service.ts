@@ -52,8 +52,9 @@ export class AuthService {
 
     doc.valueChanges().subscribe((user)=>{
       if (!(user === undefined)) {
-        console.log("Esta autenticado :v"); //redirecciona
+        console.log("Esta autenticado :v"); //aqui redirecciona
       } else {
+        console.log("No esta autenticado :'v");
         this.logout();
       }
       
