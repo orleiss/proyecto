@@ -1,4 +1,4 @@
-import { Persona } from './persona.model';
+import { Persona } from './Persona.model';
 
 
 export class PersonalMedico extends Persona {

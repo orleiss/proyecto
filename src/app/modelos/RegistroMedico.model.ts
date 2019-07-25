@@ -1,5 +1,5 @@
-import { Paciente } from './paciente.model';
-import { PersonalMedico } from './personal-medico.model';
+import { Paciente } from './Paciente.model';
+import { PersonalMedico } from './PersonalMedico.model';
 
 export class RegistroMedico {
     private codigo: number;

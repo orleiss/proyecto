@@ -1,4 +1,4 @@
-import { Paciente } from './paciente.model';
+import { Paciente } from './Paciente.model';
 
 export class Empleado extends Paciente{
 

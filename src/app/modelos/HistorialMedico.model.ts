@@ -1,4 +1,4 @@
-import { RegistroMedico } from './registro-medico.model';
+import { RegistroMedico } from './RegistroMedico.model';
 
 export class HistorialMedico{
 
