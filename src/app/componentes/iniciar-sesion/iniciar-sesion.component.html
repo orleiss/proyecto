@@ -16,6 +16,8 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+  <script src="https://apis.google.com/js/api:client.js"></script><!---->
 </head>
 
 <body>
@@ -39,7 +41,7 @@
   </nav>
   <div *ngIf="authS.afAuth.user | async as user; else showLogin">
     <h1>Tu eres... {{ user.email }}!</h1>
-    <button (click)="logoutGoogle()">Logout</button>
+    <button (click)="logout()">Logout</button>
   </div>
   <!--<ng-template #showLogin>
     <p>Please login.</p>
@@ -51,7 +53,7 @@
       <div class="row">
         <div class="mx-auto col-md-6 col-10 bg-white p-5">
           <h1 class="mb-4">Iniciar Sesión</h1>
-          <form>
+          <!--<form>
             <div class="form-group"> <input type="email" class="form-control" placeholder="Enter email" id="form9">
             </div>
             <div class="form-group mb-3"> <input type="password" class="form-control" placeholder="Password"
@@ -60,12 +62,13 @@
               </small> </div> <button type="submit" class="btn btn-warning text-light">Iniciar Sesión</button>
             <br>
             <br>
-          </form>
+          </form>-->
           <div>
-            <button class="btn btn btn-social btn-google text-light" (click)="loginGoogle()">
-              <span class="fa fa-google"> Google</span>
+            <button class="btn btn btn-social btn-google text-light" (click)="login()" >
+              <span class="fa fa-google" >Sign in with Google</span>
             </button>
           </div>
+          
         </div>
       </div>
     </div>

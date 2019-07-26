@@ -15,17 +15,13 @@ export class IniciarSesionComponent implements OnInit {
   ngOnInit() {
   }
 
-  loginGoogle(){
-    this.authS.loginGoogle();
-    this.getDatos();
+  async login(){
+    await this.authS.loginGoogle();
   }
-
-  logoutGoogle(){
+  
+  logout(){
     this.authS.logout();
   }
 
-  getDatos(){
-    console.log();
-  }
-  
+
 }
