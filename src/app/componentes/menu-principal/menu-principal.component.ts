@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from 'src/app/servicios/auth.service';
 
 @Component({
     selector: 'app-menu-principal',
@@ -8,7 +9,20 @@ import { Component } from '@angular/core';
 
 
   export class MenuPrincipalComponent {
+    ocupacion : String = null;
+    constructor(public authS: AuthService) {
+      this.authS.user.subscribe((d)=>{
+        if(d.rol == 'Medico'){
+          this.ocupacion = "Medico";
+        }
+        else{
+          this.ocupacion = "Enfermera";
+        }
+      });
+    }
 
-    
+    logout() {
+      this.authS.logout();
+    }
 
   }

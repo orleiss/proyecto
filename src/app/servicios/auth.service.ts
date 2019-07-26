@@ -25,7 +25,7 @@ export class AuthService {
   authState: any = null;
 
   constructor(public afAuth: AngularFireAuth, private router: Router, private afs: AngularFirestore) { 
-    /*this.user = this.afAuth.authState.pipe(
+    this.user = this.afAuth.authState.pipe(
       switchMap(user => {
         if (user) {
           this.authState = user;
@@ -34,7 +34,7 @@ export class AuthService {
           return of(null);
         }
       })
-    );*/
+    );
   }
 
   loginGoogle(){
