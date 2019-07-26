@@ -5,6 +5,7 @@ export class PersonalMedico extends Persona {
 
     private codigo: number;
     private ocupacion: string;
+    private sede: string;
 
     public get getCodigo() : number {
         return this.codigo;

@@ -9,11 +9,13 @@ import { AuthService } from 'src/app/servicios/auth.service';
 
 
   export class MenuPrincipalComponent {
-    ocupacion : String = null;
+    ocupacion : string = null;
+    public esMedico : boolean = false;
     constructor(public authS: AuthService) {
       this.authS.user.subscribe((d)=>{
-        if(d.rol == 'Medico'){
-          this.ocupacion = "Medico";
+        if(d.ocupacion == 'Medico'){
+          this.ocupacion = "Medico"
+          this.esMedico = true;
         }
         else{
           this.ocupacion = "Enfermera";

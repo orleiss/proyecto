@@ -13,13 +13,15 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { IniciarSesionComponent } from './componentes/iniciar-sesion/iniciar-sesion.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
+import { HomeComponent } from './componentes/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuPrincipalComponent,
     IniciarSesionComponent,
-    InicioComponent
+    InicioComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

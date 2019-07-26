@@ -39,27 +39,27 @@ export class Persona{
         this.apellido = newApellido;
     }
 
-    public set setCorreo(newCorreo:string){
+    public set setCorreo(newCorreo: string){
         this.correo=newCorreo;
     }
 
-    public set setFechaNacimiento(newfechaNacimiento:Date){
+    public set setFechaNacimiento(newfechaNacimiento: Date){
         this.fechaNacimiento=newfechaNacimiento;
     }
 
-    public set setgenero(newGenero:string){
+    public set setGenero(newGenero: string){
         this.genero=newGenero;
     }
 
-    public set setIdentificacion (newIdentificacion:number){
+    public set setIdentificacion (newIdentificacion: number){
         this.identificacion=newIdentificacion;
     }
 
-    public set setNombre(newNombre:string){
+    public set setNombre(newNombre: string){
         this.nombre=newNombre;
     }
 
-    public set setTelefono(newTelefono:number){
+    public set setTelefono(newTelefono: number){
         this.telefono=newTelefono;
     }
 
