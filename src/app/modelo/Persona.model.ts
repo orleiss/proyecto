@@ -2,7 +2,7 @@ export class Persona{
     protected apellido : string;
     protected correo: string;    
     protected fechaNacimiento: Date; 
-    protected genero: string; 
+    protected sexo: string; 
     protected identificacion: number; 
     protected nombre: string; 
     protected telefono: number; 
@@ -19,8 +19,8 @@ export class Persona{
         return this.fechaNacimiento;
     }
 
-    public get getGenero(): string{
-        return this.genero;
+    public get getSexo(): string{
+        return this.sexo;
     }
 
     public get getIdentificacion(): number{
@@ -47,8 +47,8 @@ export class Persona{
         this.fechaNacimiento=newfechaNacimiento;
     }
 
-    public set setGenero(newGenero: string){
-        this.genero=newGenero;
+    public set setSexo(newGenero: string){
+        this.sexo=newGenero;
     }
 
     public set setIdentificacion (newIdentificacion: number){

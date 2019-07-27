@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MenuPrincipalComponent } from './componentes/menu-principal/menu-principal.component';
+import { MenuPrincipalComponent } from './vista/componentes/menu-principal/menu-principal.component';
 import { environment } from '../environments/environment';
 
 import { AngularFireModule} from '@angular/fire';
@@ -11,9 +11,12 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { IniciarSesionComponent } from './componentes/iniciar-sesion/iniciar-sesion.component';
-import { InicioComponent } from './componentes/inicio/inicio.component';
-import { HomeComponent } from './componentes/home/home.component';
+import { IniciarSesionComponent } from './vista/componentes/iniciar-sesion/iniciar-sesion.component';
+import { InicioComponent } from './vista/componentes/inicio/inicio.component';
+import { HomeComponent } from './vista/componentes/home/home.component';
+import { CrearRegistroMedicoComponent } from './vista/componentes/atencionPaciente/crear-registro-medico/crear-registro-medico.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +24,8 @@ import { HomeComponent } from './componentes/home/home.component';
     MenuPrincipalComponent,
     IniciarSesionComponent,
     InicioComponent,
-    HomeComponent
+    HomeComponent,
+    CrearRegistroMedicoComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +33,8 @@ import { HomeComponent } from './componentes/home/home.component';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    FormsModule, ReactiveFormsModule
   ],
   providers: [AngularFireAuth],
   bootstrap: [AppComponent]

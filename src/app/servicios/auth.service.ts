@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable, of } from 'rxjs';
 import { switchMap, startWith, tap, filter } from 'rxjs/operators';
-import { PersonalMedico } from 'src/app/modelos/PersonalMedico.model'
+import { PersonalMedico } from 'src/app/modelo/PersonalMedico.model'
 
 interface User {
   uid: string;
@@ -15,37 +15,40 @@ interface User {
   apellido: string;
   sede: string;
   ocupacion: string;
-  genero: string;
+  sexo: string;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  user: Observable<User | null>;
-  usuario: PersonalMedico;
+  user: Observable<PersonalMedico | null>;
   authState: any = null;
+  prueba: string;
 
   constructor(public afAuth: AngularFireAuth, private router: Router, private afs: AngularFirestore) {
     this.user = this.afAuth.authState.pipe(
       switchMap(user => {
         if (user) {
           this.authState = user;
-          return this.afs.doc<User>(`usuarios/${user.uid}`).valueChanges();
+          return this.afs.doc<PersonalMedico>(`usuarios/${user.uid}`).valueChanges();
         } else {
           return of(null);
         }
       })
     );
-    this.usuario = new PersonalMedico();
+  }
+
+  get currentUser(): any {
+    return this.afs.doc<PersonalMedico>(`usuarios/${this.authState.uid}`).valueChanges();
   }
 
   loginGoogle() {
     this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())
       .then(credentials => {
         this.getDataUser(credentials.user.uid);
-      });
-
+      });  
+    
   }
 
   getDataUser(uid: String) {
@@ -65,15 +68,13 @@ export class AuthService {
     
     doc.get().toPromise().then((docc)=> {
       if (docc.exists) {
-        console.log("Document data:", docc.data());
-        this.usuario.setOcupacion = "Un medico :'v";
+        //console.log("Info:", docc.data());
         this.router.navigate(['/home']);
       } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
+        console.log("No hay info :'v");
       }
     }).catch(function (error) {
-      console.log("Error getting document:", error);
+      console.log("Error al obtener info:", error);
     });
     
   }

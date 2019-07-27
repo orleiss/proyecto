@@ -9,7 +9,7 @@
     <div class="collapse navbar-collapse" id="navbar4">      
       <div *ngIf="(authS.user | async) ; else showNothing">
         <ul class="nav navbar-nav ml-auto ">
-          <li><a routerLink="/" class="bg-dark text-white nav-link">Crear Registro Medico</a></li>
+          <li><a routerLink="/crearRegistro" class="bg-dark text-white nav-link">Crear Registro Medico</a></li>
           <li><a routerLink="/" class="bg-dark text-white nav-link">Crear Historial Medico</a></li>
           <li><a routerLink="/" class="bg-dark text-white nav-link">Consultar Historial Medico</a></li>
           <li><a routerLink="/" class="bg-dark text-white nav-link">Registros Pendientes</a></li>
@@ -37,6 +37,7 @@
 </nav>
 
 <router-outlet></router-outlet>
+
 
 <!--<script>
   // Your web app's Firebase configuration

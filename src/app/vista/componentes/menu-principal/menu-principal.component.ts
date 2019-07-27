@@ -9,18 +9,16 @@ import { AuthService } from 'src/app/servicios/auth.service';
 
 
   export class MenuPrincipalComponent {
-    ocupacion : string = null;
     public esMedico : boolean = false;
     constructor(public authS: AuthService) {
-      this.authS.user.subscribe((d)=>{
+      /*this.authS.user.subscribe((d)=>{
         if(d.ocupacion == 'Medico'){
-          this.ocupacion = "Medico"
           this.esMedico = true;
         }
         else{
-          this.ocupacion = "Enfermera";
+          
         }
-      });
+      });*/
     }
 
     logout() {

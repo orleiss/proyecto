@@ -2,7 +2,6 @@ import { Persona } from './Persona.model';
 
 
 
-
 export class Paciente extends Persona {
 
     protected alergias: string;

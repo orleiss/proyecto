@@ -7,18 +7,27 @@ export class PersonalMedico extends Persona {
     private ocupacion: string;
     private sede: string;
 
-    public get getCodigo() : number {
+    public get Codigo() : number {
         return this.codigo;
     }
-    public set setCodigo(newCodigo : number) {
+    public set Codigo(newCodigo : number) {
         this.codigo = newCodigo;
     }
 
-    public get getOcupacion (): string{
+    public get Ocupacion (): string{
         return this.ocupacion;
     }
 
-    public set setOcupacion (newOcupacion: string){
+    public set Ocupacion (newOcupacion: string){
          this.ocupacion=newOcupacion;
     }
+
+    get Sede(): string{
+        return this.sede;
+    }
+
+    set Sede(newSede: string){
+        this.sede = newSede;
+    }
+
 }
