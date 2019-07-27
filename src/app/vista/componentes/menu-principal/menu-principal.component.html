@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-light bg-dark">
   <div class="container"> <a class="navbar-brand text-primary" href="#">
       <i class="fa fa-stethoscope bg-dark text-white" aria-hidden="true"></i>
-      <b class="bg-dark text-white"> Universidad de Cartagena</b>
+      <b class="bg-dark text-warning"> Universidad de Cartagena</b>
     </a> <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse"
       data-target="#navbar4">
       <span class="navbar-toggler-icon"></span>
@@ -9,11 +9,12 @@
     <div class="collapse navbar-collapse" id="navbar4">      
       <div *ngIf="(authS.user | async) ; else showNothing">
         <ul class="nav navbar-nav ml-auto ">
-          <li><a routerLink="/crearRegistro" class="bg-dark text-white nav-link">Crear Registro Medico</a></li>
-          <li><a routerLink="/" class="bg-dark text-white nav-link">Crear Historial Medico</a></li>
-          <li><a routerLink="/" class="bg-dark text-white nav-link">Consultar Historial Medico</a></li>
-          <li><a routerLink="/" class="bg-dark text-white nav-link">Registros Pendientes</a></li>
+          <li><a routerLink="/crearRegistro" class="bg-dark text-warning  border-warning nav-link"  background = '#F7D358' >Crear Registro Medico</a></li>
+          <li><a routerLink="/" class="bg-dark text-warning  border-warning nav-link" >Crear Historial Medico</a></li>
+          <li><a routerLink="/" class="bg-dark text-warning nav-link" >Consultar Historial Medico</a></li>
+          <li><a routerLink="/" class="bg-dark text-warning nav-link">Registros Pendientes</a></li>
         </ul>
+        
       </div>
       <ng-template #showNothing>
           <ul class="nav navbar-nav ml-auto ">
@@ -24,17 +25,18 @@
       
       <ul class="nav navbar-nav navbar-right">
         <div *ngIf="authS.afAuth.user | async as user; else showLogin">
-          <a routerLink="/" class="btn navbar-btn ml-md-2 btn-dark text-white border-light" id="btn-google"
+          <a routerLink="/" class="btn navbar-btn ml-md-2 btn-dark text-warning border-warning" id="btn-google"
             (click)="logout()">Cerrar Sesión</a>
         </div>
         <ng-template #showLogin>
-          <a routerLink="/login" class="btn navbar-btn ml-md-2 btn-dark text-white border-light" id="btn-google">Iniciar Sesión</a>
+          <a routerLink="/login" class="btn navbar-btn ml-md-2 btn-dark text-warning border-warning" id="btn-google">Iniciar Sesión</a>
         </ng-template>
       </ul>
       
     </div>
   </div>
 </nav>
+
 
 <router-outlet></router-outlet>
 
