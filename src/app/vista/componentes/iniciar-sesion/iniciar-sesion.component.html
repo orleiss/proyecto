@@ -1,4 +1,5 @@
 
+  
   <!--<div *ngIf="authS.afAuth.user | async as user; else showLogin">
     <h1>Tu eres... {{ user.email }}!</h1>
     <button (click)="logout()">Logout</button>
@@ -7,8 +8,7 @@
     <p>Please login.</p>
     <button (click)="onLoginGoogle()">Login with Google</button>
   </ng-template>-->
-  <div class="py-5 text-center">
-    <!-- style="background-image: url(&quot;img/foto3.png&quot;); background-size: cover; background-position: left top; background-repeat: repeat;" -->
+  <div class="py-5 text-center" style="	background-image: url(assets/img/foto3.png);	background-position: right bottom;	background-size: cover;	background-repeat: repeat;	background-attachment: fixed;">
     <div class="container">
       <div class="row">
         <div class="mx-auto col-md-6 col-10 bg-white p-5">
@@ -24,7 +24,7 @@
             <br>
           </form>-->
           <div>
-            <button class="btn btn btn-social btn-google text-light" (click)="login()" >
+            <button class="btn btn btn-warning  text-black" (click)="login()" >
               <span class="fa fa-google" >Sign in with Google</span>
             </button>
           </div>

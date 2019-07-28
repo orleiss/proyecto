@@ -16,18 +16,12 @@ export class ServicioPacienteService {
       estado: registro.getEstado,
       fecha: registro.getFecha,
       observaciones: registro.getObservaciones,
-      paciente: registro.getPaciente
+      //paciente: registro.getPaciente
     }
 
     //this.data = JSON.stringify(registro);
     console.log(this.data);
-    this.firestore.collection("registrosPendientes").add({
-      diagnostico: registro.getDiagnostico,
-      estado: registro.getEstado,
-      fecha: registro.getFecha,
-      observaciones: registro.getObservaciones,
-      paciente: registro.getPaciente
-    })
+    this.firestore.collection("registrosPendientes").add(this.data)
     .then((docRef)=>{
       console.log(docRef.id);
     });
