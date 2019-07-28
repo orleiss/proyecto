@@ -6,50 +6,50 @@
       data-target="#navbar4">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbar4">      
-      <div *ngIf="(authS.user | async) ; else showNothing">
+    <div class="collapse navbar-collapse" id="navbar4">
+      <div class="collapse navbar-collapse" *ngIf="(authS.user | async) ; else showNothing">
         <ul class="nav navbar-nav ml-auto ">
-          <li><a routerLink="/crearRegistro" class="bg-dark text-white nav-link">Crear Registro Medico</a></li>
-          <li><a routerLink="/" class="bg-dark text-white nav-link">Crear Historial Medico</a></li>
-          <li><a routerLink="/" class="bg-dark text-white nav-link">Consultar Historial Medico</a></li>
-          <li><a routerLink="/" class="bg-dark text-white nav-link">Registros Pendientes</a></li>
+          <li><a routerLink="/home" class="bg-dark text-white nav-link">Inicio</a></li>
+          <li class="nav-item dropdown">
+              <a class="dropdown-toggle bg-dark text-white nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"aria-expanded="false">
+                Registros Médicos</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" routerLink="/crearRegistro">Crear Registro Médico</a>
+                <a class="dropdown-item" routerLink="/">Consultar Registros Médicos</a>
+              </div>
+          </li>
+          <li class="nav-item dropdown">
+              <a class="dropdown-toggle bg-dark text-white nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"aria-expanded="false">
+                Historiales Médicos</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" routerLink="/">Crear Historial Médico</a>
+                <a class="dropdown-item" routerLink="/">Consultar Historial Médico</a>
+                <a class="dropdown-item" routerLink="/">Ver Registros Pendientes</a>
+              </div>
+          </li>
         </ul>
+        
       </div>
       <ng-template #showNothing>
-          <ul class="nav navbar-nav ml-auto ">
-              <!--<li class="bg-dark text-white" style="	text-shadow: 0px 0px 0px white;"> <a class="nav-link" href="#" id="Inicio">Inicio</a> </li>
-                <li class="bg-dark text-white" style="	text-shadow: 0px 0px 0px white;"> <a class="nav-link" href="#" id="Quienes_somos">Quienes somos</a> </li>-->
-          </ul>
+        <ul class="nav navbar-nav ml-auto ">
+        </ul>
       </ng-template>
-      
+
       <ul class="nav navbar-nav navbar-right">
         <div *ngIf="authS.afAuth.user | async as user; else showLogin">
           <a routerLink="/" class="btn navbar-btn ml-md-2 btn-dark text-white border-light" id="btn-google"
             (click)="logout()">Cerrar Sesión</a>
         </div>
         <ng-template #showLogin>
-          <a routerLink="/login" class="btn navbar-btn ml-md-2 btn-dark text-white border-light" id="btn-google">Iniciar Sesión</a>
+          <div>
+              <a routerLink="/login" class="btn navbar-btn ml-md-2 btn-dark text-white border-light" id="btn-google">Iniciar
+                Sesión</a>
+          </div>
         </ng-template>
       </ul>
-      
+
     </div>
   </div>
 </nav>
 
 <router-outlet></router-outlet>
-
-
-<!--<script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyDI-C2k_nfmeoAQQHTsGqA4Yhx3LuGCqPs",
-    authDomain: "isoftsalud-1b9da.firebaseapp.com",
-    databaseURL: "https://isoftsalud-1b9da.firebaseio.com",
-    projectId: "isoftsalud-1b9da",
-    storageBucket: "",
-    messagingSenderId: "266791937924",
-    appId: "1:266791937924:web:a9b27e5b42f28578"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-</script> -->

@@ -14,7 +14,7 @@ export class RegistroMedico {
         return this.codigo;
     }
 
-    public get getdiagnostico():string{
+    public get getDiagnostico():string{
         return this.diagnostico;
     }
 
@@ -56,6 +56,14 @@ export class RegistroMedico {
 
     public set setPersonalMedico(newPersonalMedico: PersonalMedico){
         this.personalMedico=newPersonalMedico;
+    }
+
+    public get getEstado(): string{
+        return this.estado;
+    }
+
+    public set setEstado(newEstado:string){
+        this.estado=newEstado;
     }
 
 }

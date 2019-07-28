@@ -7,26 +7,26 @@
         <!--text-light-->
         <p class="mb-4 lead ">Información del paciente</p>
         <!--text-light-->
-        <form (ngSubmit)="enviarDatos(datos)" #datos="ngForm"> <!-- [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)" -->
+        <form (ngSubmit)="enviarDatos()" #datos="ngForm"> <!-- [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)" -->
           <div class="form-row">
             <div class="form-group col-md-4" style="text-align: left;">
               <label for="inputNombre">Nombre</label>
-              <input [(ngModel)] = "paciente.setNombre" #nombre="ngModel" type="text" class="form-control" id="nombre" placeholder="Nombre" name="nombre" 
+              <input [(ngModel)] = "data.nombre" #nombre="ngModel" type="text" class="form-control" id="nombre" placeholder="Nombre" name="nombre" 
                 pattern="[A-Za-z]+">
             </div>
             <div class="form-group col-md-4" style="text-align: left;">
               <label for="inputApellido">Apellido</label>
-              <input [(ngModel)] = "paciente.setApellido" #apellido="ngModel" type="text" class="form-control" id="apellido" placeholder="Apellido" name="apellido" 
+              <input [(ngModel)] = "data.apellido" #apellido="ngModel" type="text" class="form-control" id="apellido" placeholder="Apellido" name="apellido" 
                 pattern="[A-Za-z]+">
             </div>
             <div class="form-group col-md-4" style="text-align: left;">
               <label for="inputTeléfono">Teléfono</label>
-              <input [(ngModel)] = "paciente.setTelefono" #telefono="ngModel" telefonotype="number" class="form-control" id="telefono" placeholder="Teléfono" name="telefono"
+              <input [(ngModel)] = "data.telefono" #telefono="ngModel" telefonotype="number" class="form-control" id="telefono" placeholder="Teléfono" name="telefono"
                 pattern="[0-9]{10}" >
             </div>
             <div class="form-group col-md-4" style="text-align: left;">
               <label for="inputIdentificación">Identificación</label>
-              <input [(ngModel)] = "paciente.setIdentificacion" #identificacion="ngModel" type="number" class="form-control" id="identificacion" placeholder="Identificación" name="identificacion">
+              <input [(ngModel)] = "data.identificacion" #identificacion="ngModel" type="number" class="form-control" id="identificacion" placeholder="Identificación" name="identificacion">
             </div>
             <!--<div class="form-group col-md-4" style="text-align: left;"> 
                     <label for="inputTipodePaciente" >Tipo de Paciente</label>
@@ -40,7 +40,7 @@
             <!--<div class="form-group col-md-4"> <input type="text" class="form-control" id="form22" placeholder="Sexo"> </div>-->
             <div class="form-group col-md-4" style="text-align: left;">
               <label for="inputSexo">Sexo</label>
-              <select [(ngModel)] = "paciente.setSexo" #sexo="ngModel" class="custom-select mr-sm-2" id="sexo" name = "sexo" >
+              <select [(ngModel)] = "data.sexo" #sexo="ngModel" class="custom-select mr-sm-2" id="sexo" name = "sexo" >
                 <option selected value="">Sexo</option>
                 <option value="Masculino">Masculino</option>
                 <option value="Femenino">Femenino</option>
@@ -48,7 +48,7 @@
             </div>
             <div class="form-group col-md-4" style="text-align: left;">
               <label for="inputSangre">Tipo de Sangre</label>
-              <select [(ngModel)] = "paciente.setTipoSangre" #sangre="ngModel" class="custom-select mr-sm-2" id="sangre" name="sangre" >
+              <select [(ngModel)] = "data.tipoSangre" #sangre="ngModel" class="custom-select mr-sm-2" id="sangre" name="sangre" >
                 <option selected value="">Tipo de Sangre</option>
                 <option value="O-">O-</option>
                 <option value="O+">O+</option>
@@ -63,11 +63,11 @@
 
             <div class="form-group col-md-4" style="text-align: left;">
               <label for="inputSede">Sede</label>
-              <input [(ngModel)] = "registro.sede" #sede="ngModel" type="text" class="form-control" id="sede" name="sede" placeholder="Sede" required pattern="[A-Za-z]+">
+              <input [(ngModel)] = "data.sede" #sede="ngModel" type="text" class="form-control" id="sede" name="sede" placeholder="Sede" required pattern="[A-Za-z]+">
             </div>
             <div class="form-group col-md-4" style="text-align: left;">
               <label for="inputFecha">Fecha de nacimiento</label>
-              <input [(ngModel)] = "registro.fechaN" #fechaN="ngModel" type="date" class="form-control" id="fechaN" name="fechaN" placeholder="Fecha de nacimiento" min="1940-01-01"
+              <input [(ngModel)] = "data.fechaNacimiento" #fechaN="ngModel" type="date" class="form-control" id="fechaN" name="fechaN" placeholder="Fecha de nacimiento" min="1940-01-01"
                 max="2004-12-31" >
             </div>
             <!--<div class="form-group col-md-4"> <input type="text" class="form-control" id="form22" placeholder="Codigo Historial Médico" name="Codigo Historial Médico"> </div>-->
@@ -76,11 +76,11 @@
           <div class="form-group">
               <label for="inputPaciente" class="form-check form-check-inline">Tipo de paciente:</label>
               <div class="form-check form-check-inline">
-                <input [(ngModel)] = "registro.paciente" #paciente="ngModel" class="form-check-input" type="radio" name="paciente" id="radio1" value="Estudiante">
+                <input [(ngModel)] = "data.tipoPaciente" #paciente="ngModel" class="form-check-input" type="radio" name="paciente" id="radio1" value="Estudiante">
                 <label class="form-check-label" for="radio1">Estudiante</label>
               </div>
               <div class="form-check form-check-inline">
-                <input [(ngModel)] = "registro.paciente" #paciente="ngModel" class="form-check-input" type="radio" name="paciente" id="radio2" value="Empleado">
+                <input [(ngModel)] = "data.tipoPaciente" #paciente="ngModel" class="form-check-input" type="radio" name="paciente" id="radio2" value="Empleado">
                 <label class="form-check-label" for="radio2">Empleado</label>
               </div>
           </div>
@@ -88,32 +88,32 @@
           <div class="form-row">
             <div class="form-group col-md-4" style="text-align: left;">
               <label for="inputCodigo">Código académico</label>
-              <input [(ngModel)] = "registro.codigoA" #codigoA="ngModel" type="number" class="form-control" id="codigoA" name="codigoA" placeholder="Código académico" >
+              <input [(ngModel)] = "data.codigo" #codigoA="ngModel" type="number" class="form-control" id="codigoA" name="codigoA" placeholder="Código académico" >
             </div>
-            <div class="form-group col-md-4" style="text-align: left;">
-              <label for="inputPrograma">Programa(estudiante)</label>
-              <input [(ngModel)] = "registro.programa" #programa="ngModel"programa type="text" class="form-control" id="programa" name="programa" placeholder="Programa" >
+            <div class="form-group col-md-4" style="text-align: left;" *ngIf="data.tipoPaciente == 'Estudiante'">
+              <label for="inputPrograma">Programa</label>
+              <input [(ngModel)] = "data.programa" #programa="ngModel"programa type="text" class="form-control" id="programa" name="programa" placeholder="Programa" >
             </div>
-            <div class="form-group col-md-4" style="text-align: left;">
-              <label for="inputSemestre">Semestre(estudiante)</label>
-              <input [(ngModel)] = "registro.semestre" #semestre="ngModel" type="number" class="form-control" id="semestre" name="programa" placeholder="Semestre" >
+            <div class="form-group col-md-4" style="text-align: left;" *ngIf="data.tipoPaciente == 'Estudiante'">
+              <label for="inputSemestre">Semestre</label>
+              <input [(ngModel)] = "data.semestre" #semestre="ngModel" type="number" class="form-control" id="semestre" name="programa" placeholder="Semestre" >
             </div>
-            <div class="form-group col-md-4" style="text-align: left;">
-                <label for="inputCargo">Cargo(empleado)</label>
-                <input [(ngModel)] = "registro.cargo" #cargo="ngModel" type="text" class="form-control" id="cargo" name="cargo" placeholder="Cargo" >
+            <div class="form-group col-md-4" style="text-align: left;" *ngIf="data.tipoPaciente == 'Empleado'">
+                <label for="inputCargo">Cargo</label>
+                <input [(ngModel)] = "data.cargo" #cargo="ngModel" type="text" class="form-control" id="cargo" name="cargo" placeholder="Cargo" >
               </div>
           </div>
           <div class="form-group" style="text-align: left;">
             <label for="inputAlergias">Alergias</label>
-            <textarea [(ngModel)] = "registro.alergias" #alergias="ngModel" class="form-control" id="alergias" name="alergias" rows="3" placeholder="Alergias:" ></textarea>
+            <textarea [(ngModel)] = "data.alergias" #alergias="ngModel" class="form-control" id="alergias" name="alergias" rows="3" placeholder="Alergias:" ></textarea>
           </div>
           <div class="form-group" style="text-align: left;">
             <label for="inputObservaciones">Observaciones</label>
-            <textarea [(ngModel)] = "registro.observaciones" #observaciones="ngModel" class="form-control" id="observaciones" name="observaciones" rows="3" placeholder="Escriba las Observaciones"></textarea>
+            <textarea [(ngModel)] = "data.observaciones" #observaciones="ngModel" class="form-control" id="observaciones" name="observaciones" rows="3" placeholder="Escriba las Observaciones"></textarea>
           </div>
           <div class="form-group" style="text-align: left;">
             <label for="inputDiagnostico">Diagnóstico</label>
-            <textarea [(ngModel)] = "registro.diagnostico" #diagnostico="ngModel" class="form-control" id="diagnostico" name="diagnostico" rows="3" placeholder="Escriba el Diagnóstico"></textarea>
+            <textarea [(ngModel)] = "data.diagnostico" #diagnostico="ngModel" class="form-control" id="diagnostico" name="diagnostico" rows="3" placeholder="Escriba el Diagnóstico"></textarea>
           </div>
           
             <button type="submit" class="btn btn-warning" style="margin-right: 10px;">Enviar</button>
