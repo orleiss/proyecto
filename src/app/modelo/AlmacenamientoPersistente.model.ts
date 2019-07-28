@@ -1,10 +1,13 @@
+import { ServicioPacienteService } from 'src/app/servicios/servicio-paciente.service';
+import { RegistroMedico } from './RegistroMedico.model';
+
 export class AlmacenamientoPersistente{
-
-    public actualizarHistorialMedico(RegistroMedico, number):void {
-
-    }
-
-    public crearRegistroMedico():void{
+    constructor(private service: ServicioPacienteService){
 
     }
+
+    insertarRegistroMedico(registro: RegistroMedico){
+        this.service.insertarRegistroMedico(registro);
+    }
+
 }

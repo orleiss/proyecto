@@ -5,14 +5,10 @@ export class HistorialMedico{
     private codigo: number;
     private fecha: Date;
     private historial= Array<RegistroMedico>();
-    private idPaciente: number;
-    private idPersonalMedico: number;
-
-
-    public consultar():void{
-
-
-    }
+    private identificacion: number;
+    private nombre: string;
+    private sexo: string;
+    private ocupacion: string;
 
     public get getCodigo():number{
         return this.codigo;
@@ -26,16 +22,20 @@ export class HistorialMedico{
         return this.historial;
     }
 
-    public get getIdPaciente():number{
-        return this.idPaciente;
+    public get getIdentificacionPaciente():number{
+        return this.identificacion;
     }
 
-    public get getIdPersonalMedico(): number{
-        return this.idPersonalMedico;
+    public get getNombre(): string{
+        return this.nombre;
     }
 
-    public guardar():void{
+    public get getSexo(): string{
+        return this.sexo;
+    }
 
+    public get getOcupacion(): string{
+        return this.ocupacion;
     }
 
     public set setCodigo(newCodigo:number){
@@ -46,7 +46,20 @@ export class HistorialMedico{
         this.historial=newRegistrosMedicos;
     }
 
-    public set setIdPaciente(newIdPaciente:number){
-        this.idPaciente=newIdPaciente;
+    public set setIdentificacion(newIdPaciente:number){
+        this.identificacion=newIdPaciente;
     }
+
+    public set setNombre(newNombre: string){
+        this.nombre = newNombre;
+    }
+
+    public set setSexo(newSexo: string){
+        this.sexo = newSexo;
+    }
+
+    public set setOcupacion(newOcupacion: string){
+        this.ocupacion = newOcupacion;
+    }
+
 }

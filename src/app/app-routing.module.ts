@@ -5,12 +5,16 @@ import { IniciarSesionComponent } from './vista/componentes/iniciar-sesion/inici
 import { InicioComponent } from './vista/componentes/inicio/inicio.component';
 import { HomeComponent } from './vista/componentes/home/home.component';
 import { CrearRegistroMedicoComponent } from './vista/componentes/atencionPaciente/crear-registro-medico/crear-registro-medico.component';
+import { CrearHistorialMedicoComponent } from './vista/componentes/atencionPaciente/crear-historial-medico/crear-historial-medico.component';
+import { ConsultarRegistroMedicoComponent } from './vista/componentes/atencionPaciente/consultar-registro-medico/consultar-registro-medico.component';
 
 const routes: Routes = [
   { path: '', component: InicioComponent },
   { path: 'login', component: IniciarSesionComponent },
   { path: 'home', component: HomeComponent },
   { path: 'crearRegistro', component: CrearRegistroMedicoComponent },
+  { path: 'crearHistorial', component: CrearHistorialMedicoComponent },
+  { path: 'consultarRegistro', component: ConsultarRegistroMedicoComponent },
 ];
 
 @NgModule({

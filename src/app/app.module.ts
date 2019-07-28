@@ -16,6 +16,8 @@ import { InicioComponent } from './vista/componentes/inicio/inicio.component';
 import { HomeComponent } from './vista/componentes/home/home.component';
 import { CrearRegistroMedicoComponent } from './vista/componentes/atencionPaciente/crear-registro-medico/crear-registro-medico.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CrearHistorialMedicoComponent } from './vista/componentes/atencionPaciente/crear-historial-medico/crear-historial-medico.component';
+import { ConsultarRegistroMedicoComponent } from './vista/componentes/atencionPaciente/consultar-registro-medico/consultar-registro-medico.component';
 
 
 @NgModule({
@@ -26,6 +28,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     InicioComponent,
     HomeComponent,
     CrearRegistroMedicoComponent,
+    CrearHistorialMedicoComponent,
+    ConsultarRegistroMedicoComponent,
   ],
   imports: [
     BrowserModule,

@@ -7,119 +7,377 @@
         <!--text-light-->
         <p class="mb-4 lead ">Información del paciente</p>
         <!--text-light-->
-        <form (ngSubmit)="enviarDatos()" #datos="ngForm"> <!-- [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)" -->
-          <div class="form-row">
-            <div class="form-group col-md-4" style="text-align: left;">
-              <label for="inputNombre">Nombre</label>
-              <input [(ngModel)] = "data.nombre" #nombre="ngModel" type="text" class="form-control" id="nombre" placeholder="Nombre" name="nombre" 
-                pattern="[A-Za-z]+">
+        <div class="form-group">
+            <label for="inputPaciente" class="form-check form-check-inline">Tipo de paciente:</label>
+            <div class="form-check form-check-inline">
+              <input [(ngModel)]="tipoPaciente" #paciente="ngModel" class="form-check-input" type="radio" name="tipoPaciente" id="radio1" value="Estudiante">
+              <label class="form-check-label" for="radio1">Estudiante</label>
             </div>
-            <div class="form-group col-md-4" style="text-align: left;">
-              <label for="inputApellido">Apellido</label>
-              <input [(ngModel)] = "data.apellido" #apellido="ngModel" type="text" class="form-control" id="apellido" placeholder="Apellido" name="apellido" 
-                pattern="[A-Za-z]+">
+            <div class="form-check form-check-inline">
+              <input [(ngModel)]="tipoPaciente" #paciente="ngModel" class="form-check-input" type="radio" name="tipoPaciente" id="radio2" value="Empleado">
+              <label class="form-check-label" for="radio2">Empleado</label>
             </div>
-            <div class="form-group col-md-4" style="text-align: left;">
-              <label for="inputTeléfono">Teléfono</label>
-              <input [(ngModel)] = "data.telefono" #telefono="ngModel" telefonotype="number" class="form-control" id="telefono" placeholder="Teléfono" name="telefono"
-                pattern="[0-9]{10}" >
-            </div>
-            <div class="form-group col-md-4" style="text-align: left;">
-              <label for="inputIdentificación">Identificación</label>
-              <input [(ngModel)] = "data.identificacion" #identificacion="ngModel" type="number" class="form-control" id="identificacion" placeholder="Identificación" name="identificacion">
-            </div>
-            <!--<div class="form-group col-md-4" style="text-align: left;"> 
-                    <label for="inputTipodePaciente" >Tipo de Paciente</label>
-                  <input type="text" class="form-control" id="form22" name="Tipo de Paciente" placeholder="Tipo de Paciente" required pattern="[A-Za-z]+"> 
+        </div>
+        <br>
+        <div *ngIf="(tipoPaciente == 'Estudiante') ; else show">
+            <form [formGroup]="myForm" (ngSubmit)="enviarDatos()" #datos="ngForm" novalidate>
+              <!-- [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)" -->
+              <div class="form-row">
+                <div class="form-group col-md-4" style="text-align: left;">
+                  <label for="inputNombre">Nombres</label>
+                  <input type="text" class="form-control" id="nombre" placeholder="Nombres" name="nombre"
+                    formControlName="nombre">
+                  <div *ngIf="myForm.get('nombre').invalid && (myForm.get('nombre').touched || myForm.get('nombre').dirty)">
+                    <p class="error" *ngIf="myForm.get('nombre').hasError('required')">Campo requerido</p>
+                    <p class="error" *ngIf="myForm.get('nombre').hasError('pattern')">Campo inválido</p>
+                    <p class="error" *ngIf="myForm.get('nombre').hasError('minlength')">Minimo 4 caracteres</p>
+                  </div>
+                </div>
+    
+                <div class="form-group col-md-4" style="text-align: left;">
+                  <label for="inputApellido">Apellidos</label>
+                  <input type="text" class="form-control" id="apellido" placeholder="Apellidos" name="apellido"
+                    formControlName="apellido">
+                  <div
+                    *ngIf="myForm.get('apellido').invalid && (myForm.get('apellido').touched || myForm.get('apellido').dirty)">
+                    <p class="error" *ngIf="myForm.get('apellido').hasError('required')">Campo requerido</p>
+                    <p class="error" *ngIf="myForm.get('apellido').hasError('pattern')">Campo inválido</p>
+                    <p class="error" *ngIf="myForm.get('apellido').hasError('minlength')">Minimo 4 caracteres</p>
+                  </div>
+                </div>
+                <div class="form-group col-md-4" style="text-align: left;">
+                  <label for="inputTeléfono">Teléfono</label>
+                  <input type="number" class="form-control" id="telefono" placeholder="Teléfono" name="telefono"
+                    formControlName="telefono">
+                  <div
+                    *ngIf="myForm.get('telefono').invalid && (myForm.get('telefono').touched || myForm.get('telefono').dirty)">
+                    <p class="error" *ngIf="myForm.get('telefono').hasError('required')">Campo requerido</p>
+                    <p class="error" *ngIf="myForm.get('telefono').hasError('pattern')">Campo inválido</p>
+                  </div>
+                </div>
+                <div class="form-group col-md-4" style="text-align: left;">
+                  <label for="inputIdentificación">Identificación</label>
+                  <input type="number" class="form-control" id="identificacion" placeholder="Identificación"
+                    name="identificacion" formControlName="identificacion">
+                  <div *ngIf="myForm.get('identificacion').invalid && (myForm.get('identificacion').touched || myForm.get('identificacion').dirty)">
+                    <p class="error" *ngIf="myForm.get('identificacion').hasError('required')">Campo requerido</p>
+                    <p class="error" *ngIf="myForm.get('identificacion').hasError('pattern')">Campo inválido</p>
+                  </div>
+                </div>
+    
+                <!--<div class="form-group col-md-4" style="text-align: left;"> 
+                        <label for="inputTipodePaciente" >Tipo de Paciente</label>
+                      <input type="text" class="form-control" id="form22" name="Tipo de Paciente" placeholder="Tipo de Paciente" required pattern="[A-Za-z]+"> 
+                    </div>-->
+    
+                <!--<div class="form-group col-md-4" style="text-align: left;"> 
+                        <label for="inputEmail" >Email</label>
+                      <input type="email" class="form-control" id="form23" aria-describedby="emailHelp" placeholder="Correo electrónico" name="Email" required> 
+                    </div>-->
+                <!--<div class="form-group col-md-4"> <input type="text" class="form-control" id="form22" placeholder="Sexo"> </div>-->
+                <div class="form-group col-md-4" style="text-align: left;">
+                  <label for="inputSexo">Sexo</label>
+                  <select class="custom-select mr-sm-2" id="sexo" name="sexo" formControlName="sexo">
+                    <option selected value="">Sexo</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                  </select>
+                  <div *ngIf="myForm.get('sexo').invalid && (myForm.get('sexo').touched || myForm.get('sexo').dirty)">
+                    <p class="error" *ngIf="myForm.get('sexo').hasError('required')">Campo requerido</p>
+                  </div>
+                </div>
+                <div class="form-group col-md-4" style="text-align: left;">
+                  <label for="inputSangre">Tipo de Sangre</label>
+                  <select class="custom-select mr-sm-2" id="tipoSangre" name="tipoSangre" formControlName="tipoSangre">
+                    <option selected value="">Tipo de Sangre</option>
+                    <option value="O-">O-</option>
+                    <option value="O+">O+</option>
+                    <option value="A-">A-</option>
+                    <option value="A+">A+</option>
+                    <option value="B-">B-</option>
+                    <option value="B+">B+</option>
+                    <option value="AB-">AB-</option>
+                    <option value="AB+">AB+</option>
+                  </select>
+                  <div
+                    *ngIf="myForm.get('tipoSangre').invalid && (myForm.get('tipoSangre').touched || myForm.get('tipoSangre').dirty)">
+                    <p class="error" *ngIf="myForm.get('tipoSangre').hasError('required')">Campo requerido</p>
+                  </div>
+                </div>
+    
+                <div class="form-group col-md-4" style="text-align: left;">
+                  <label for="inputSede">Sede</label>
+                  <input type="text" class="form-control" id="sede" name="sede" placeholder="Sede" formControlName="sede">
+                  <div *ngIf="myForm.get('sede').invalid && (myForm.get('sede').touched || myForm.get('sede').dirty)">
+                    <p class="error" *ngIf="myForm.get('sede').hasError('required')">Campo requerido</p>
+                    <p class="error" *ngIf="myForm.get('sede').hasError('pattern')">Campo inválido</p>
+                    <p class="error" *ngIf="myForm.get('sede').hasError('minlength')">Minimo 4 caracteres</p>
+                  </div>
+                </div>
+                <div class="form-group col-md-4" style="text-align: left;">
+                  <label for="inputFecha">Fecha de nacimiento</label>
+                  <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento"
+                    placeholder="Fecha de nacimiento" formControlName="fechaNacimiento" max="2004-12-31" min="1940-01-01">
+                  <div *ngIf="myForm.get('fechaNacimiento').invalid && (myForm.get('fechaNacimiento').touched || myForm.get('fechaNacimiento').dirty)">
+                    <p class="error" *ngIf="myForm.get('fechaNacimiento').hasError('required')">Campo requerido</p>
+                  </div>
+                </div>
+                <!--<div class="form-group col-md-4"> <input type="text" class="form-control" id="form22" placeholder="Codigo Historial Médico" name="Codigo Historial Médico"> </div>-->
+              </div>
+    
+              <!--<div class="form-group">
+                <label for="inputPaciente" class="form-check form-check-inline">Tipo de paciente:</label>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="tipoPaciente" id="radio1" value="Estudiante"
+                    formControlName="tipoPaciente">
+                  <label class="form-check-label" for="radio1">Estudiante</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="tipoPaciente" id="radio2" value="Empleado"
+                    formControlName="tipoPaciente">
+                  <label class="form-check-label" for="radio2">Empleado</label>
+                </div>
+                <div *ngIf="myForm.get('tipoPaciente').invalid && (myForm.get('tipoPaciente').touched || myForm.get('tipoPaciente').dirty)">
+                  <p class="error" *ngIf="myForm.get('tipoPaciente').hasError('required')">Campo requerido</p>
+                </div>
+              </div>-->
+    
+              <div class="form-row">
+                <div class="form-group col-md-4" style="text-align: left;">
+                  <label for="inputCodigo">Código académico</label>
+                  <input type="number" class="form-control" id="codigo" name="codigo" placeholder="Código académico" formControlName="codigo">
+                  <div *ngIf="myForm.get('codigo').invalid && (myForm.get('codigo').touched || myForm.get('codigo').dirty)">
+                    <p class="error" *ngIf="myForm.get('codigo').hasError('required')">Campo requerido</p>
+                    <p class="error" *ngIf="myForm.get('codigo').hasError('pattern')">Campo inválido</p>
+                    <p class="error" *ngIf="myForm.get('codigo').hasError('minlength')">Minimo 4 caracteres</p>
+                  </div>
+                </div>
+                <div class="form-group col-md-4" style="text-align: left;">
+                  <label for="inputPrograma">Programa</label>
+                  <input programa type="text" class="form-control" id="programa" name="programa" placeholder="Programa" formControlName="programa">
+                    <div *ngIf="myForm.get('programa').invalid && (myForm.get('programa').touched || myForm.get('programa').dirty)">
+                      <p class="error" *ngIf="myForm.get('programa').hasError('required')">Campo requerido</p>
+                      <p class="error" *ngIf="myForm.get('programa').hasError('pattern')">Campo inválido</p>
+                      <p class="error" *ngIf="myForm.get('programa').hasError('minlength')">Minimo 4 caracteres</p>
+                    </div>
+                </div>
+                <div class="form-group col-md-4" style="text-align: left;">
+                  <label for="inputSemestre">Semestre</label>
+                  <input type="number" class="form-control" id="semestre" name="programa" placeholder="Semestre" formControlName="semestre">
+                  <div *ngIf="myForm.get('semestre').invalid && (myForm.get('semestre').touched || myForm.get('semestre').dirty)">
+                    <p class="error" *ngIf="myForm.get('semestre').hasError('required')">Campo requerido</p>
+                    <p class="error" *ngIf="myForm.get('semestre').hasError('pattern')">Campo inválido</p>
+                    <p class="error" *ngIf="myForm.get('semestre').hasError('min') || myForm.get('semestre').hasError('max')">Mínimo 1, máximo 10</p>
+                  </div>
+                </div>
+                <!--<div class="form-group col-md-4" style="text-align: left;" *ngIf="myForm.value.tipoPaciente == 'Empleado'">
+                  <label for="inputCargo">Cargo</label>
+                  <input type="text" class="form-control" id="cargo" name="cargo" placeholder="Cargo"
+                    formControlName="cargo">
                 </div>-->
-
-            <!--<div class="form-group col-md-4" style="text-align: left;"> 
-                    <label for="inputEmail" >Email</label>
-                  <input type="email" class="form-control" id="form23" aria-describedby="emailHelp" placeholder="Correo electrónico" name="Email" required> 
+              </div>
+              <div class="form-group" style="text-align: left;">
+                <label for="inputAlergias">Alergias</label>
+                <textarea class="form-control" id="alergias" name="alergias" rows="3" placeholder="Alergias:"
+                  formControlName="alergias"></textarea>
+              </div>
+              <div class="form-group" style="text-align: left;">
+                <label for="inputObservaciones">Observaciones</label>
+                <textarea class="form-control" id="observaciones" name="observaciones" rows="3"
+                  placeholder="Escriba las Observaciones" formControlName="observaciones"></textarea>
+              </div>
+              <div class="form-group" style="text-align: left;">
+                <label for="inputDiagnostico">Diagnóstico</label>
+                <textarea class="form-control" id="diagnostico" name="diagnostico" rows="3"
+                  placeholder="Escriba el Diagnóstico" formControlName="diagnostico"></textarea>
+              </div>
+    
+              <button type="submit" class="btn btn-warning" style="margin-right: 10px;">Enviar</button>
+              <button routerlink="/home" type="submit" class="btn btn-secondary">Cancelar</button>
+    
+            </form>
+        </div>
+        <ng-template #show>
+          <div *ngIf="(tipoPaciente == 'Empleado') ; else Nel">
+              <form [formGroup]="myForm2" (ngSubmit)="enviarDatos()" #datos="ngForm" novalidate>
+                <!-- [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)" -->
+                <div class="form-row">
+                  <div class="form-group col-md-4" style="text-align: left;">
+                    <label for="inputNombre">Nombres</label>
+                    <input type="text" class="form-control" id="nombre" placeholder="Nombres" name="nombre"
+                      formControlName="nombre">
+                    <div *ngIf="myForm2.get('nombre').invalid && (myForm2.get('nombre').touched || myForm2.get('nombre').dirty)">
+                      <p class="error" *ngIf="myForm2.get('nombre').hasError('required')">Campo requerido</p>
+                      <p class="error" *ngIf="myForm2.get('nombre').hasError('pattern')">Campo inválido</p>
+                      <p class="error" *ngIf="myForm2.get('nombre').hasError('minlength')">Minimo 4 caracteres</p>
+                    </div>
+                  </div>
+      
+                  <div class="form-group col-md-4" style="text-align: left;">
+                    <label for="inputApellido">Apellidos</label>
+                    <input type="text" class="form-control" id="apellido" placeholder="Apellidos" name="apellido"
+                      formControlName="apellido">
+                    <div
+                      *ngIf="myForm2.get('apellido').invalid && (myForm2.get('apellido').touched || myForm2.get('apellido').dirty)">
+                      <p class="error" *ngIf="myForm2.get('apellido').hasError('required')">Campo requerido</p>
+                      <p class="error" *ngIf="myForm2.get('apellido').hasError('pattern')">Campo inválido</p>
+                      <p class="error" *ngIf="myForm2.get('apellido').hasError('minlength')">Minimo 4 caracteres</p>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-4" style="text-align: left;">
+                    <label for="inputTeléfono">Teléfono</label>
+                    <input type="number" class="form-control" id="telefono" placeholder="Teléfono" name="telefono"
+                      formControlName="telefono">
+                    <div
+                      *ngIf="myForm2.get('telefono').invalid && (myForm2.get('telefono').touched || myForm2.get('telefono').dirty)">
+                      <p class="error" *ngIf="myForm2.get('telefono').hasError('required')">Campo requerido</p>
+                      <p class="error" *ngIf="myForm2.get('telefono').hasError('pattern')">Campo inválido</p>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-4" style="text-align: left;">
+                    <label for="inputIdentificación">Identificación</label>
+                    <input type="number" class="form-control" id="identificacion" placeholder="Identificación"
+                      name="identificacion" formControlName="identificacion">
+                    <div *ngIf="myForm2.get('identificacion').invalid && (myForm2.get('identificacion').touched || myForm2.get('identificacion').dirty)">
+                      <p class="error" *ngIf="myForm2.get('identificacion').hasError('required')">Campo requerido</p>
+                      <p class="error" *ngIf="myForm2.get('identificacion').hasError('pattern')">Campo inválido</p>
+                    </div>
+                  </div>
+      
+                  <!--<div class="form-group col-md-4" style="text-align: left;"> 
+                          <label for="inputTipodePaciente" >Tipo de Paciente</label>
+                        <input type="text" class="form-control" id="form22" name="Tipo de Paciente" placeholder="Tipo de Paciente" required pattern="[A-Za-z]+"> 
+                      </div>-->
+      
+                  <!--<div class="form-group col-md-4" style="text-align: left;"> 
+                          <label for="inputEmail" >Email</label>
+                        <input type="email" class="form-control" id="form23" aria-describedby="emailHelp" placeholder="Correo electrónico" name="Email" required> 
+                      </div>-->
+                  <!--<div class="form-group col-md-4"> <input type="text" class="form-control" id="form22" placeholder="Sexo"> </div>-->
+                  <div class="form-group col-md-4" style="text-align: left;">
+                    <label for="inputSexo">Sexo</label>
+                    <select class="custom-select mr-sm-2" id="sexo" name="sexo" formControlName="sexo">
+                      <option selected value="">Sexo</option>
+                      <option value="Masculino">Masculino</option>
+                      <option value="Femenino">Femenino</option>
+                    </select>
+                    <div *ngIf="myForm2.get('sexo').invalid && (myForm2.get('sexo').touched || myForm2.get('sexo').dirty)">
+                      <p class="error" *ngIf="myForm2.get('sexo').hasError('required')">Campo requerido</p>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-4" style="text-align: left;">
+                    <label for="inputSangre">Tipo de Sangre</label>
+                    <select class="custom-select mr-sm-2" id="tipoSangre" name="tipoSangre" formControlName="tipoSangre">
+                      <option selected value="">Tipo de Sangre</option>
+                      <option value="O-">O-</option>
+                      <option value="O+">O+</option>
+                      <option value="A-">A-</option>
+                      <option value="A+">A+</option>
+                      <option value="B-">B-</option>
+                      <option value="B+">B+</option>
+                      <option value="AB-">AB-</option>
+                      <option value="AB+">AB+</option>
+                    </select>
+                    <div *ngIf="myForm2.get('tipoSangre').invalid && (myForm2.get('tipoSangre').touched || myForm2.get('tipoSangre').dirty)">
+                      <p class="error" *ngIf="myForm2.get('tipoSangre').hasError('required')">Campo requerido</p>
+                    </div>
+                  </div>
+      
+                  <div class="form-group col-md-4" style="text-align: left;">
+                    <label for="inputSede">Sede</label>
+                    <input type="text" class="form-control" id="sede" name="sede" placeholder="Sede" formControlName="sede">
+                    <div *ngIf="myForm2.get('sede').invalid && (myForm2.get('sede').touched || myForm2.get('sede').dirty)">
+                      <p class="error" *ngIf="myForm2.get('sede').hasError('required')">Campo requerido</p>
+                      <p class="error" *ngIf="myForm2.get('sede').hasError('pattern')">Campo inválido</p>
+                      <p class="error" *ngIf="myForm2.get('sede').hasError('minlength')">Minimo 4 caracteres</p>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-4" style="text-align: left;">
+                    <label for="inputFecha">Fecha de nacimiento</label>
+                    <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento"
+                      placeholder="Fecha de nacimiento" formControlName="fechaNacimiento" max="2004-12-31" min="1940-01-01">
+                    <div *ngIf="myForm2.get('fechaNacimiento').invalid && (myForm2.get('fechaNacimiento').touched || myForm2.get('fechaNacimiento').dirty)">
+                      <p class="error" *ngIf="myForm2.get('fechaNacimiento').hasError('required')">Campo requerido</p>
+                    </div>
+                  </div>
+                  <!--<div class="form-group col-md-4"> <input type="text" class="form-control" id="form22" placeholder="Codigo Historial Médico" name="Codigo Historial Médico"> </div>-->
+                </div>
+      
+                <!--<div class="form-group">
+                  <label for="inputPaciente" class="form-check form-check-inline">Tipo de paciente:</label>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tipoPaciente" id="radio1" value="Estudiante"
+                      formControlName="tipoPaciente">
+                    <label class="form-check-label" for="radio1">Estudiante</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tipoPaciente" id="radio2" value="Empleado"
+                      formControlName="tipoPaciente">
+                    <label class="form-check-label" for="radio2">Empleado</label>
+                  </div>
+                  <div *ngIf="myForm2.get('tipoPaciente').invalid && (myForm2.get('tipoPaciente').touched || myForm.get('tipoPaciente').dirty)">
+                    <p class="error" *ngIf="myForm.get('tipoPaciente').hasError('required')">Campo requerido</p>
+                  </div>
                 </div>-->
-            <!--<div class="form-group col-md-4"> <input type="text" class="form-control" id="form22" placeholder="Sexo"> </div>-->
-            <div class="form-group col-md-4" style="text-align: left;">
-              <label for="inputSexo">Sexo</label>
-              <select [(ngModel)] = "data.sexo" #sexo="ngModel" class="custom-select mr-sm-2" id="sexo" name = "sexo" >
-                <option selected value="">Sexo</option>
-                <option value="Masculino">Masculino</option>
-                <option value="Femenino">Femenino</option>
-              </select>
-            </div>
-            <div class="form-group col-md-4" style="text-align: left;">
-              <label for="inputSangre">Tipo de Sangre</label>
-              <select [(ngModel)] = "data.tipoSangre" #sangre="ngModel" class="custom-select mr-sm-2" id="sangre" name="sangre" >
-                <option selected value="">Tipo de Sangre</option>
-                <option value="O-">O-</option>
-                <option value="O+">O+</option>
-                <option value="A-">A-</option>
-                <option value="A+">A+</option>
-                <option value="B-">B-</option>
-                <option value="B+">B+</option>
-                <option value="AB-">AB-</option>
-                <option value="AB+">AB+</option>
-              </select>
-            </div>
-
-            <div class="form-group col-md-4" style="text-align: left;">
-              <label for="inputSede">Sede</label>
-              <input [(ngModel)] = "data.sede" #sede="ngModel" type="text" class="form-control" id="sede" name="sede" placeholder="Sede" required pattern="[A-Za-z]+">
-            </div>
-            <div class="form-group col-md-4" style="text-align: left;">
-              <label for="inputFecha">Fecha de nacimiento</label>
-              <input [(ngModel)] = "data.fechaNacimiento" #fechaN="ngModel" type="date" class="form-control" id="fechaN" name="fechaN" placeholder="Fecha de nacimiento" min="1940-01-01"
-                max="2004-12-31" >
-            </div>
-            <!--<div class="form-group col-md-4"> <input type="text" class="form-control" id="form22" placeholder="Codigo Historial Médico" name="Codigo Historial Médico"> </div>-->
+      
+                <div class="form-row">
+                  <div class="form-group col-md-4" style="text-align: left;">
+                    <label for="inputCodigo">Código académico</label>
+                    <input type="number" class="form-control" id="codigo" name="codigo" placeholder="Código académico" formControlName="codigo">
+                    <div *ngIf="myForm2.get('codigo').invalid && (myForm2.get('codigo').touched || myForm2.get('codigo').dirty)">
+                      <p class="error" *ngIf="myForm2.get('codigo').hasError('required')">Campo requerido</p>
+                      <p class="error" *ngIf="myForm2.get('codigo').hasError('pattern')">Campo inválido</p>
+                      <p class="error" *ngIf="myForm2.get('codigo').hasError('minlength')">Minimo 4 caracteres</p>
+                    </div>
+                  </div>
+                  <!--<div class="form-group col-md-4" style="text-align: left;">
+                    <label for="inputPrograma">Programa</label>
+                    <input programa type="text" class="form-control" id="programa" name="programa" placeholder="Programa" formControlName="programa">
+                      <div *ngIf="myForm2.get('programa').invalid && (myForm2.get('programa').touched || myForm2.get('programa').dirty)">
+                        <p class="error" *ngIf="myForm2.get('programa').hasError('required')">Campo requerido</p>
+                        <p class="error" *ngIf="myForm2.get('programa').hasError('pattern')">Campo inválido</p>
+                        <p class="error" *ngIf="myForm2.get('programa').hasError('minlength')">Minimo 4 caracteres</p>
+                      </div>
+                  </div>-->
+                  <!--<div class="form-group col-md-4" style="text-align: left;">
+                    <label for="inputSemestre">Semestre</label>
+                    <input type="number" class="form-control" id="semestre" name="programa" placeholder="Semestre" formControlName="semestre">
+                    <div *ngIf="myForm2.get('semestre').invalid && (myForm2.get('semestre').touched || myForm2.get('semestre').dirty)">
+                      <p class="error" *ngIf="myForm2.get('semestre').hasError('required')">Campo requerido</p>
+                      <p class="error" *ngIf="myForm2.get('semestre').hasError('pattern')">Campo inválido</p>
+                      <p class="error" *ngIf="myForm2.get('semestre').hasError('min') || myForm2.get('semestre').hasError('max')">Mínimo 1, máximo 10</p>
+                    </div>
+                  </div>-->
+                  <div class="form-group col-md-4" style="text-align: left;">
+                    <label for="inputCargo">Cargo</label>
+                    <input type="text" class="form-control" id="cargo" name="cargo" placeholder="Cargo"
+                      formControlName="cargo">
+                  </div>
+                </div>
+                <div class="form-group" style="text-align: left;">
+                  <label for="inputAlergias">Alergias</label>
+                  <textarea class="form-control" id="alergias" name="alergias" rows="3" placeholder="Alergias:"
+                    formControlName="alergias"></textarea>
+                </div>
+                <div class="form-group" style="text-align: left;">
+                  <label for="inputObservaciones">Observaciones</label>
+                  <textarea class="form-control" id="observaciones" name="observaciones" rows="3"
+                    placeholder="Escriba las Observaciones" formControlName="observaciones"></textarea>
+                </div>
+                <div class="form-group" style="text-align: left;">
+                  <label for="inputDiagnostico">Diagnóstico</label>
+                  <textarea class="form-control" id="diagnostico" name="diagnostico" rows="3"
+                    placeholder="Escriba el Diagnóstico" formControlName="diagnostico"></textarea>
+                </div>
+      
+                <button type="submit" class="btn btn-warning" style="margin-right: 10px;">Enviar</button>
+                <button routerlink="/home" type="submit" class="btn btn-secondary">Cancelar</button>
+      
+              </form>
           </div>
-
-          <div class="form-group">
-              <label for="inputPaciente" class="form-check form-check-inline">Tipo de paciente:</label>
-              <div class="form-check form-check-inline">
-                <input [(ngModel)] = "data.tipoPaciente" #paciente="ngModel" class="form-check-input" type="radio" name="paciente" id="radio1" value="Estudiante">
-                <label class="form-check-label" for="radio1">Estudiante</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input [(ngModel)] = "data.tipoPaciente" #paciente="ngModel" class="form-check-input" type="radio" name="paciente" id="radio2" value="Empleado">
-                <label class="form-check-label" for="radio2">Empleado</label>
-              </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group col-md-4" style="text-align: left;">
-              <label for="inputCodigo">Código académico</label>
-              <input [(ngModel)] = "data.codigo" #codigoA="ngModel" type="number" class="form-control" id="codigoA" name="codigoA" placeholder="Código académico" >
-            </div>
-            <div class="form-group col-md-4" style="text-align: left;" *ngIf="data.tipoPaciente == 'Estudiante'">
-              <label for="inputPrograma">Programa</label>
-              <input [(ngModel)] = "data.programa" #programa="ngModel"programa type="text" class="form-control" id="programa" name="programa" placeholder="Programa" >
-            </div>
-            <div class="form-group col-md-4" style="text-align: left;" *ngIf="data.tipoPaciente == 'Estudiante'">
-              <label for="inputSemestre">Semestre</label>
-              <input [(ngModel)] = "data.semestre" #semestre="ngModel" type="number" class="form-control" id="semestre" name="programa" placeholder="Semestre" >
-            </div>
-            <div class="form-group col-md-4" style="text-align: left;" *ngIf="data.tipoPaciente == 'Empleado'">
-                <label for="inputCargo">Cargo</label>
-                <input [(ngModel)] = "data.cargo" #cargo="ngModel" type="text" class="form-control" id="cargo" name="cargo" placeholder="Cargo" >
-              </div>
-          </div>
-          <div class="form-group" style="text-align: left;">
-            <label for="inputAlergias">Alergias</label>
-            <textarea [(ngModel)] = "data.alergias" #alergias="ngModel" class="form-control" id="alergias" name="alergias" rows="3" placeholder="Alergias:" ></textarea>
-          </div>
-          <div class="form-group" style="text-align: left;">
-            <label for="inputObservaciones">Observaciones</label>
-            <textarea [(ngModel)] = "data.observaciones" #observaciones="ngModel" class="form-control" id="observaciones" name="observaciones" rows="3" placeholder="Escriba las Observaciones"></textarea>
-          </div>
-          <div class="form-group" style="text-align: left;">
-            <label for="inputDiagnostico">Diagnóstico</label>
-            <textarea [(ngModel)] = "data.diagnostico" #diagnostico="ngModel" class="form-control" id="diagnostico" name="diagnostico" rows="3" placeholder="Escriba el Diagnóstico"></textarea>
-          </div>
-          
-            <button type="submit" class="btn btn-warning" style="margin-right: 10px;">Enviar</button>
-            <button type="submit" class="btn btn-secondary">Cancelar</button>
-
-        </form>
+        </ng-template>
+        <ng-template #Nel>
+        </ng-template>
       </div>
     </div>
   </div>

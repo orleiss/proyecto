@@ -8,7 +8,8 @@ export class RegistroMedico {
     private fecha: Date;
     private observaciones:string;
     private paciente:Paciente;
-    private personalMedico:PersonalMedico;
+    private nombrePersonalMedico: string;
+    private ocupacion: string;
 
     public get getCodigo():number{
         return this.codigo;
@@ -30,8 +31,12 @@ export class RegistroMedico {
         return this.paciente;
     }
 
-    public get getPersonaMedico():PersonalMedico{
-        return this.personalMedico;
+    public get getNombrePersonaMedico():string{
+        return this.nombrePersonalMedico;
+    }
+
+    public get getOcupacion(): string{
+        return this.ocupacion;
     }
 
     public set setCodigo(newCodigo:number){
@@ -54,8 +59,8 @@ export class RegistroMedico {
         this.paciente=newPaciente;
     }
 
-    public set setPersonalMedico(newPersonalMedico: PersonalMedico){
-        this.personalMedico=newPersonalMedico;
+    public set setNombrePersonalMedico(newPersonalMedico: string){
+        this.nombrePersonalMedico=newPersonalMedico;
     }
 
     public get getEstado(): string{
@@ -64,6 +69,10 @@ export class RegistroMedico {
 
     public set setEstado(newEstado:string){
         this.estado=newEstado;
+    }
+
+    public set setOcupacion(newOcupacion: string){
+        this.ocupacion = newOcupacion;
     }
 
 }
