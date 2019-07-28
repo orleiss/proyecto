@@ -25,7 +25,8 @@ export class ServicioPacienteService {
       diagnostico: registro.getDiagnostico,
       estado: registro.getEstado,
       fecha: registro.getFecha,
-      observaciones: registro.getObservaciones
+      observaciones: registro.getObservaciones,
+      paciente: registro.getPaciente
     })
     .then((docRef)=>{
       console.log(docRef.id);
