@@ -39,7 +39,7 @@ export class CrearHistorialMedicoComponent implements OnInit {
 
   crearHistorialMedico(){
     let almacenamiento = new AlmacenamientoPersistente(this.service);
-    let encontrado = almacenamiento.consultarHistorialMedico(this.myForm.value.identificacion);
+    //let encontrado = almacenamiento.consultarHistorialMedico(this.myForm.value.identificacion);
     
     this.historial.setNombre = this.myForm.value.nombre + ' ' + this.myForm.value.apellido;
       this.historial.setSexo = this.myForm.value.sexo;

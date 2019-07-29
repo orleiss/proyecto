@@ -59,7 +59,7 @@ export class ServicioPacienteService {
           historial.setOcupacion = res.ocupacion;
           historial.setSexo = res.sexo;
           historial.setHistorial = res.historial;
-          alert(historial)
+          
         }
         else {
 
