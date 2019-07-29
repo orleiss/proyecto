@@ -1,0 +1,54 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{createMode ? 'Create Todo' : 'Historial Médico'}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="todoForm" (ngSubmit)="saveTodo()">
+        <div class="form-row">
+        <div class="form-group col-md-4" style="text-align: left;">
+            <label for="Nombre">Nombre</label>
+              <input type="text" id="Nombre" placeholder="Nombre" class="form-control" formControlName="Nombre" disabled />
+          </div>
+              <div class="form-group col-md-4" style="text-align: left;">
+              <label for="Apellido">Apellido</label>
+              <input type="text" id="Apellido" placeholder="Apellido" class="form-control" formControlName="Apellido" disabled />
+          </div>
+          <div class="form-group col-md-4" style="text-align: left;">
+              <label for="Identificación">Identificación</label>
+              <input type="number" class="form-control" id="Identificación" placeholder="Identificación"
+                name="Identificación" formControlName="Identificación" disabled>
+            </div>
+        </div>
+          <div class="form-row">
+            
+            <div class="form-group col-md-4" style="text-align: left;">
+                <label for="Sexo">Sexo</label>
+                <input type="number" class="form-control" id="Sexo" placeholder="Sexo"
+                name="Sexo" formControlName="Sexo" disabled>
+              </div>
+              <div class="form-group col-md-4" style="text-align: left;">
+                  <label for="inputFecha">Fecha Nacimiento</label>
+                  <input type="text" class="form-control" id="inputFecha" placeholder="Fecha Nacimiento"
+                  name="inputFecha" formControlName="inputFecha" disabled>
+                </div>
+                <div class="form-group col-md-4" style="text-align: left;">
+                    <label for="Ocupacion">Ocupacion</label>
+                    <input type="text" class="form-control" id="Ocupacion" placeholder="Ocupacion"
+                      name="Ocupacion" formControlName="Ocupacion" disabled>
+                  </div>
+          </div>
+            <div class="form-row">
+                <div class="form-group col-md-6" style="text-align: left;">
+                    <label for="inputCodigoHistorial">Codigo Historial Médico</label>
+                    <input type="number" class="form-control" id="inputCodigoHistorial" placeholder="Codigo Academico"
+                    name="inputCodigoHistorial" formControlName="inputCodigoHistorial" disabled>
+                  </div>
+            </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+  </div>
+

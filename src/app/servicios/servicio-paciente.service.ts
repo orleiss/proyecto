@@ -47,20 +47,19 @@ export class ServicioPacienteService {
   }
 
   consultarHistorialMedico(id: string): any{
-    let docc: any;
-    this.firestore.collection("historialesMedicos").doc(id)
+    return this.firestore.collection("historialesMedicos").doc(id).valueChanges()/*.doc(id)
     .get().toPromise().then((doc)=> {
       if(doc.exists){
-        docc = doc.data();
-        return docc;
+        this.data = doc.data();
+        console.log(this.data);
+        return this.data;
       }
       else{
-        return null;
+        
       }
     }).catch(function(error) {
       console.log("Error al obtener el historial:", error);
-    });
-
+    });*/
   }
 
 }

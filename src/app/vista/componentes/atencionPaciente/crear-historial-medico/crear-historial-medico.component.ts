@@ -33,14 +33,14 @@ export class CrearHistorialMedicoComponent implements OnInit {
       this.crearHistorialMedico();
     }
     else{
-      alert("No se pudo crear el registro médico");
+      alert("No se pudo crear el historial médico");
     }
   }
 
   crearHistorialMedico(){
     let almacenamiento = new AlmacenamientoPersistente(this.service);
 
-    almacenamiento.consultarHistorialMedico(this.myForm.value.identificacion);
+    console.log(almacenamiento.consultarHistorialMedico(this.myForm.value.identificacion));
 /*
     if(almacenamiento.consultarHistorialMedico(this.myForm.value.identificacion) == null){
       console.log("Siga we");

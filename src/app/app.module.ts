@@ -18,6 +18,10 @@ import { CrearRegistroMedicoComponent } from './vista/componentes/atencionPacien
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CrearHistorialMedicoComponent } from './vista/componentes/atencionPaciente/crear-historial-medico/crear-historial-medico.component';
 import { ConsultarRegistroMedicoComponent } from './vista/componentes/atencionPaciente/consultar-registro-medico/consultar-registro-medico.component';
+import { ConsultarHistorialMedicoComponent } from './vista/componentes/atencionPaciente/consultar-historial-medico/consultar-historial-medico.component';
+import { ModalHistorialComponent } from './vista/componentes/atencionPaciente/modal-formulario-historial/modal-historial.component';
+import { ModalComponent } from './vista/componentes/atencionPaciente/modal-formulario-registro/modal.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -30,6 +34,9 @@ import { ConsultarRegistroMedicoComponent } from './vista/componentes/atencionPa
     CrearRegistroMedicoComponent,
     CrearHistorialMedicoComponent,
     ConsultarRegistroMedicoComponent,
+    ConsultarHistorialMedicoComponent,
+    ModalHistorialComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +45,8 @@ import { ConsultarRegistroMedicoComponent } from './vista/componentes/atencionPa
     AngularFireDatabaseModule,
     AngularFirestoreModule,
     AngularFireAuthModule,
-    FormsModule, ReactiveFormsModule
+    FormsModule, ReactiveFormsModule,
+    NgbModule
   ],
   providers: [AngularFireAuth],
   bootstrap: [AppComponent]
