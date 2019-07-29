@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/servicios/auth.service';
+import { PersonalMedico } from 'src/app/modelo/PersonalMedico.model';
 
 @Component({
     selector: 'app-menu-principal',
@@ -9,16 +10,13 @@ import { AuthService } from 'src/app/servicios/auth.service';
 
 
   export class MenuPrincipalComponent {
-    public esMedico : boolean = false;
+    personal: PersonalMedico = null;
     constructor(public authS: AuthService) {
-      /*this.authS.user.subscribe((d)=>{
-        if(d.ocupacion == 'Medico'){
-          this.esMedico = true;
+      this.authS.user.subscribe((u)=>{
+        if(u){
+          this.personal = u;
         }
-        else{
-          
-        }
-      });*/
+      });
     }
 
     logout() {

@@ -22,6 +22,7 @@ import { ConsultarHistorialMedicoComponent } from './vista/componentes/atencionP
 import { ModalHistorialComponent } from './vista/componentes/atencionPaciente/modal-formulario-historial/modal-historial.component';
 import { ModalComponent } from './vista/componentes/atencionPaciente/modal-formulario-registro/modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RegistroPendiente } from './vista/componentes/atencionPaciente/registros-pendientes/registros-pendientes.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ConsultarHistorialMedicoComponent,
     ModalHistorialComponent,
     ModalComponent,
+    RegistroPendiente,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +51,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgbModule
   ],
   providers: [AngularFireAuth],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[ModalComponent,ModalHistorialComponent],
+
 })
 export class AppModule { }

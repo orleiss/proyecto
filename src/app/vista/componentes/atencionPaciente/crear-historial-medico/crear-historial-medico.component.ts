@@ -39,14 +39,21 @@ export class CrearHistorialMedicoComponent implements OnInit {
 
   crearHistorialMedico(){
     let almacenamiento = new AlmacenamientoPersistente(this.service);
-
-    console.log(almacenamiento.consultarHistorialMedico(this.myForm.value.identificacion));
-/*
-    if(almacenamiento.consultarHistorialMedico(this.myForm.value.identificacion) == null){
-      console.log("Siga we");
-    }
-    else{
+    let encontrado = almacenamiento.consultarHistorialMedico(this.myForm.value.identificacion);
+    
+    this.historial.setNombre = this.myForm.value.nombre + ' ' + this.myForm.value.apellido;
+      this.historial.setSexo = this.myForm.value.sexo;
+      this.historial.setIdentificacion = this.myForm.value.identificacion;
+      this.historial.setOcupacion = this.myForm.value.ocupacion;
+      this.historial.setFecha = this.myForm.value.fechaNacimiento;
       
+      almacenamiento.insertarHistorialMedico(this.historial);
+
+      alert("Historial médico creado con exito");
+
+    /*console.log(encontrado);
+    if(encontrado == false){
+      //console.log("Siga we");
       this.historial.setNombre = this.myForm.value.nombre + ' ' + this.myForm.value.apellido;
       this.historial.setSexo = this.myForm.value.sexo;
       this.historial.setIdentificacion = this.myForm.value.identificacion;
@@ -57,8 +64,11 @@ export class CrearHistorialMedicoComponent implements OnInit {
 
       alert("Historial médico creado con exito");
     }
+    else{
+      alert("Ya se encuentra un historial médico relacionado");
+    }*/
     
-    this.resetForm(this.myForm);*/
+    //this.resetForm(this.myForm);
   }
 
   resetForm(form: FormGroup) {

@@ -12,7 +12,7 @@ export class ServicioPacienteService {
   json2: any;
   constructor(private firestore: AngularFirestore) { }
 
-  insertarRegistroMedico(registro: RegistroMedico){
+  insertarRegistroMedico(registro: RegistroMedico) {
     //const id = this.firestore.createId();
     /*this.data = {
       diagnostico: registro.getDiagnostico,
@@ -26,40 +26,46 @@ export class ServicioPacienteService {
 
     this.json1 = JSON.stringify(registro);
     this.json2 = JSON.parse(this.json1);
-    
+
     console.log(this.json2);
     this.firestore.collection("registrosPendientes").add(this.json2)
-    .then((docRef)=>{
-      //console.log(docRef.id);
-    });
-  } 
+      .then((docRef) => {
+        //console.log(docRef.id);
+      });
+  }
 
-  insertarHistorialMedico(historial: HistorialMedico){
+  insertarHistorialMedico(historial: HistorialMedico) {
     this.json1 = JSON.stringify(historial);
     this.json2 = JSON.parse(this.json1);
-    let id : string = historial.getIdentificacion.toString();
+    let id: string = historial.getIdentificacion.toString();
     //console.log(this.json2);
 
     this.firestore.collection("historialesMedicos").doc(id).set(this.json2)
-    .then((docRef)=>{
-      //console.log(docRef.id);
-    });
+      .then((docRef) => {
+        //console.log(docRef.id);
+      });
   }
 
-  consultarHistorialMedico(id: string): any{
-    return this.firestore.collection("historialesMedicos").doc(id).valueChanges()/*.doc(id)
-    .get().toPromise().then((doc)=> {
-      if(doc.exists){
-        this.data = doc.data();
-        console.log(this.data);
-        return this.data;
-      }
-      else{
-        
-      }
-    }).catch(function(error) {
-      console.log("Error al obtener el historial:", error);
-    });*/
+  consultarHistorialMedico(id: string): any {
+    let historial = new HistorialMedico();
+    //return this.firestore.collection("historialesMedicos").doc(id).valueChanges()
+    this.firestore.collection("historialesMedicos").doc(id)
+      .get().toPromise().then((doc) => {
+        if (doc.exists) {
+          let res = doc.data();
+          historial.setFecha = res.fecha;
+          historial.setIdentificacion = res.identificacion;
+          historial.setNombre = res.nombre;
+          historial.setOcupacion = res.ocupacion;
+          historial.setSexo = res.sexo;
+          historial.setHistorial = res.historial;
+          alert(historial)
+        }
+        else {
+
+        }
+      });
   }
 
+  
 }

@@ -18,13 +18,13 @@
                 <a class="dropdown-item" routerLink="/consultarRegistro">Consultar Registros Médicos</a>
               </div>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown" *ngIf="(personal.ocupacion == 'Médico')">
               <a class="dropdown-toggle bg-dark text-warning nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"aria-expanded="false">
                 Historiales Médicos</a>
               <div class="dropdown-menu">
                 <a class="dropdown-item" routerLink="/crearHistorial">Crear Historial Médico</a>
                 <a class="dropdown-item" routerLink="/consultarHistorial">Consultar Historial Médico</a>
-                <a class="dropdown-item" routerLink="/">Ver Registros Pendientes</a>
+                <a class="dropdown-item" routerLink="/RegistroPendiente">Ver Registros Pendientes</a>
               </div>
           </li>
         </ul>

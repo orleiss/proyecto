@@ -1,18 +1,12 @@
 import { ServicioPacienteService } from 'src/app/servicios/servicio-paciente.service';
 import { RegistroMedico } from './RegistroMedico.model';
 import { HistorialMedico } from './HistorialMedico.model';
-import { ThrowStmt } from '@angular/compiler';
 
 export class AlmacenamientoPersistente{
-    data = {
-      fecha: '',
-      identificacion:'',
-      nombre:'',
-      ocupacion:'',
-      sexo:'',
-      historial:[]
+    flag: string;
+    constructor(private service: ServicioPacienteService){
+
     }
-    constructor(private service: ServicioPacienteService){}
 
     public insertarRegistroMedico(registro: RegistroMedico){
         this.service.insertarRegistroMedico(registro);
@@ -22,11 +16,21 @@ export class AlmacenamientoPersistente{
         this.service.insertarHistorialMedico(historial);
     }
 
-    public consultarHistorialMedico(identificacion: number){
+    public consultarHistorialMedico(identificacion: number): any{
         let id: string = identificacion.toString();
-        this.service.consultarHistorialMedico(id).subscribe((res)=>{
+        
+        this.flag = '';
+        this.service.consultarHistorialMedico(id)/*.subscribe((res)=>{
+          console.log(res);
+          if(res !== undefined){
             
+            alert()
+            this.flag = '.';
+          }
         });
+        //console.log(historial);
+        console.log(this.flag);
+        return (this.flag == '.') ? true : false ;*/
     }
     /*
     private prueba(res): any{

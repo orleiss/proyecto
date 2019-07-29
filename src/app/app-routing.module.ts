@@ -8,6 +8,7 @@ import { CrearRegistroMedicoComponent } from './vista/componentes/atencionPacien
 import { CrearHistorialMedicoComponent } from './vista/componentes/atencionPaciente/crear-historial-medico/crear-historial-medico.component';
 import { ConsultarRegistroMedicoComponent } from './vista/componentes/atencionPaciente/consultar-registro-medico/consultar-registro-medico.component';
 import { ConsultarHistorialMedicoComponent } from './vista/componentes/atencionPaciente/consultar-historial-medico/consultar-historial-medico.component';
+import { RegistroPendiente } from './vista/componentes/atencionPaciente/registros-pendientes/registros-pendientes.component';
 
 const routes: Routes = [
   { path: '', component: InicioComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'crearHistorial', component: CrearHistorialMedicoComponent },
   { path: 'consultarRegistro', component: ConsultarRegistroMedicoComponent },
   { path: 'consultarHistorial', component: ConsultarHistorialMedicoComponent },
+  { path: 'RegistroPendiente', component: RegistroPendiente },
 ];
 
 @NgModule({
