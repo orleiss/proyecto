@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { RegistroMedico } from '../modelo/RegistroMedico.model';
+import { HistorialMedico } from '../modelo/HistorialMedico.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class ServicioPacienteService {
 
   insertarRegistroMedico(registro: RegistroMedico){
     //const id = this.firestore.createId();
-    this.data = {
+    /*this.data = {
       diagnostico: registro.getDiagnostico,
       estado: registro.getEstado,
       fecha: registro.getFecha,
@@ -21,7 +22,7 @@ export class ServicioPacienteService {
       paciente: {
 
       }
-    }
+    }*/
 
     this.json1 = JSON.stringify(registro);
     this.json2 = JSON.parse(this.json1);
@@ -32,5 +33,34 @@ export class ServicioPacienteService {
       //console.log(docRef.id);
     });
   } 
+
+  insertarHistorialMedico(historial: HistorialMedico){
+    this.json1 = JSON.stringify(historial);
+    this.json2 = JSON.parse(this.json1);
+    let id : string = historial.getIdentificacion.toString();
+    //console.log(this.json2);
+
+    this.firestore.collection("historialesMedicos").doc(id).set(this.json2)
+    .then((docRef)=>{
+      //console.log(docRef.id);
+    });
+  }
+
+  consultarHistorialMedico(id: string): any{
+    let docc: any;
+    this.firestore.collection("historialesMedicos").doc(id)
+    .get().toPromise().then((doc)=> {
+      if(doc.exists){
+        docc = doc.data();
+        return docc;
+      }
+      else{
+        return null;
+      }
+    }).catch(function(error) {
+      console.log("Error al obtener el historial:", error);
+    });
+
+  }
 
 }

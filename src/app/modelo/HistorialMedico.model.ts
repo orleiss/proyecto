@@ -22,7 +22,7 @@ export class HistorialMedico{
         return this.historial;
     }
 
-    public get getIdentificacionPaciente():number{
+    public get getIdentificacion():number{
         return this.identificacion;
     }
 
@@ -40,6 +40,10 @@ export class HistorialMedico{
 
     public set setCodigo(newCodigo:number){
         this.codigo=newCodigo;
+    }
+
+    public set setFecha(newFecha:Date){
+        this.fecha=newFecha;
     }
 
     public set setHistorial(newRegistrosMedicos : Array<RegistroMedico> ){
